@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Approval Sheet</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="toolbar no-print">
+    <div class="actions">
+      <button class="btn" id="pdfBtn">Download PDF</button>
+      <button class="btn secondary" id="printBtn">Print</button>
+      <button class="btn ghost" id="importBtn">Import data</button>
+      <button class="btn danger" id="resetBtn">Clear form</button>
+      <input type="file" id="importFile" accept="application/json" style="display:none">
+    </div>
+    <div class="status" id="saveStatus">Saved in this browser.</div>
+  </div>
+
+  <div class="sheet" id="sheet"></div>
+
+  <!-- html2pdf.js: client-side HTML → PDF, no backend needed -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+          integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="js/data.js"></script>
+  <script src="js/table-engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

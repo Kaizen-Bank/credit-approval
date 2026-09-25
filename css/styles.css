@@ -1,0 +1,238 @@
+:root{
+  --gold:#d8a528;
+  --gold-dark:#a97f1c;
+  --gold-pale:#f7e8c4;
+  --ink:#221f1f;
+  --ink-soft:#6b6560;
+  --paper:#ffffff;
+  --line:#e6ddc9;
+  --line-strong:#d3c39a;
+  --danger:#a53d3d;
+  --danger-bg:#fbeceb;
+  --fill-bg:#fffaf0;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:#f3efe4;
+  font-family:'Segoe UI', Arial, sans-serif;
+  color:var(--ink);
+  padding:28px 12px 80px;
+}
+.toolbar{
+  max-width:900px;
+  margin:0 auto 16px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+}
+.toolbar .actions{ display:flex; gap:8px; flex-wrap:wrap; }
+.toolbar .status{ font-size:12.5px; color:#726a5c; }
+.btn{
+  border:1px solid var(--gold-dark);
+  background:var(--gold);
+  color:var(--ink);
+  padding:8px 14px;
+  border-radius:4px;
+  font-size:13px;
+  cursor:pointer;
+  font-weight:700;
+}
+.btn.secondary{ background:#fff; color:var(--ink); border-color:var(--line-strong); }
+.btn.ghost{ background:transparent; color:var(--ink); border-color:var(--line-strong); }
+.btn.danger{ background:#fff; color:var(--danger); border-color:var(--danger); }
+.btn:hover{ opacity:.85; }
+
+.sheet{
+  max-width:900px;
+  margin:0 auto;
+  background:var(--paper);
+  border:1px solid var(--line-strong);
+  padding:44px 48px 60px;
+  box-shadow:0 4px 18px rgba(60,50,10,.10);
+}
+
+/* Letterhead */
+.letterhead{
+  text-align:center;
+  border-bottom:3px solid var(--gold);
+  padding-bottom:16px;
+  margin-bottom:28px;
+}
+.letterhead .logo{ height:56px; margin-bottom:10px; }
+.letterhead .title{
+  font-size:22px;
+  letter-spacing:1.5px;
+  font-weight:700;
+  color:var(--ink);
+}
+.letterhead .subtitle{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+/* Section spacing — each section reads as its own card, not one
+   continuous block */
+.section-block{
+  margin-bottom:34px;
+  padding-bottom:6px;
+}
+.section-block:last-child{ margin-bottom:0; }
+
+h2.section-title{
+  font-size:13.5px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:var(--ink);
+  background:var(--gold-pale);
+  padding:8px 12px;
+  margin:0 0 14px;
+  border-left:5px solid var(--gold);
+  font-weight:700;
+}
+
+/* dynamic table */
+.dtable-wrap{ margin-bottom:8px; }
+table.dtable{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13.5px;
+  background:#fff;
+}
+table.dtable th, table.dtable td{
+  border:1px solid var(--line);
+  padding:8px 10px;
+  text-align:left;
+  vertical-align:top;
+}
+table.dtable th{
+  background:var(--gold);
+  color:var(--ink);
+  font-weight:700;
+  font-size:12.5px;
+  position:relative;
+}
+table.dtable th.row-handle, table.dtable td.row-handle{
+  width:26px; padding:8px 4px; text-align:center;
+  background:#fbf6e8;
+}
+table.dtable .cell-text[contenteditable]{ outline:none; }
+table.dtable th .col-remove{
+  position:absolute; top:3px; right:4px;
+  width:16px; height:16px; line-height:14px;
+  text-align:center; border-radius:50%;
+  background:rgba(0,0,0,.12); color:var(--ink);
+  cursor:pointer; font-size:11px; user-select:none;
+}
+table.dtable th .col-remove:hover{ background:var(--danger); color:#fff; }
+
+td.static-cell{ background:#f7f4ec; color:var(--ink); font-weight:600; }
+td.fillable{ background:var(--fill-bg); outline:none; }
+td.fillable:hover{ background:#fdeec2; }
+td.fillable:focus{ background:#fdeec2; box-shadow:inset 0 0 0 1px var(--gold-dark); }
+td.fillable:empty:before{
+  content:attr(data-placeholder);
+  color:#b6a367; font-style:italic;
+}
+
+.row-remove{
+  display:inline-block; width:16px; height:16px; line-height:14px;
+  text-align:center; border-radius:50%;
+  background:var(--danger-bg); color:var(--danger);
+  cursor:pointer; font-size:11px; user-select:none;
+}
+.row-remove:hover{ background:var(--danger); color:#fff; }
+tr.total-row td{ font-weight:700; background:#f7f4ec; }
+
+/* Facility Request table — the one table where headers AND rows are
+   fully editable. Given dark charcoal headers so it visibly stands
+   apart from every other (gold-header) table on the sheet. */
+table.dtable--facility{ border:2px solid var(--ink); }
+table.dtable--facility th{ background:var(--ink); color:#fff; }
+table.dtable--facility th .col-remove{ background:rgba(255,255,255,.18); color:#fff; }
+table.dtable--facility td.fillable{ background:#faf8f2; }
+table.dtable--facility th .cell-text[contenteditable]:hover,
+table.dtable--facility td.fillable:hover{ background:#f0e9d4; }
+
+.table-actions{ display:flex; gap:8px; margin-top:8px; }
+.add-col-btn, .add-row-btn{
+  font-size:12px; padding:5px 10px;
+  border:1px dashed var(--line-strong);
+  background:#fff; color:var(--ink);
+  border-radius:4px; cursor:pointer; font-weight:600;
+}
+.add-col-btn:hover, .add-row-btn:hover{ background:var(--gold-pale); border-color:var(--gold-dark); }
+
+/* editable text sections (kept for any future free-text section type) */
+.text-lines{ display:flex; flex-direction:column; gap:6px; margin-bottom:8px; }
+.text-line{ display:flex; align-items:flex-start; gap:8px; font-size:14px; }
+.text-line .cell-text{
+  flex:1; background:var(--fill-bg); border:1px solid var(--line);
+  border-radius:3px; padding:6px 8px; min-height:20px; outline:none;
+}
+.text-line .cell-text:empty:before{
+  content:attr(data-placeholder); color:#b6a367; font-style:italic;
+}
+.text-line .cell-text:focus{ box-shadow:inset 0 0 0 1px var(--gold-dark); }
+
+/* Sections I & J — fixed boilerplate, not editable, not a table */
+ul.static-list{
+  margin:0; padding-left:20px; font-size:14px; line-height:1.8; color:var(--ink);
+}
+ul.static-list li{ margin-bottom:3px; }
+
+/* Account officer — "Please kindly approve." line, label, blank
+   signature line, and a fillable name field. */
+.approve-line{ font-size:14px; font-weight:700; color:var(--ink); margin:0 0 20px; }
+.signature-block{ padding-top:6px; }
+.sig-role{ font-size:13px; font-weight:700; letter-spacing:.3px; color:var(--ink); margin-bottom:34px; }
+.sig-line{ width:260px; border-bottom:1px solid var(--ink); margin-bottom:6px; }
+.sig-name{
+  display:block; width:260px; font-size:13.5px;
+  padding:2px 4px; outline:none; color:var(--ink);
+}
+.sig-name:hover{ background:var(--fill-bg); }
+.sig-name:focus{ background:var(--fill-bg); box-shadow:inset 0 0 0 1px var(--gold-dark); }
+.sig-name:empty:before{
+  content:attr(data-placeholder); color:#b6a367; font-style:italic;
+}
+
+/* Section B — narrative guarantor paragraphs, not a table */
+.narrative-card{
+  background:#fbf9f3; border:1px solid var(--line);
+  border-radius:4px; padding:10px 12px; margin-bottom:10px;
+}
+.narrative-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+.narrative-label{ font-size:12px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:var(--gold-dark); }
+.narrative-text{ margin:0; font-size:14px; line-height:1.9; color:var(--ink); }
+.narrative-blank{
+  display:inline-block; min-width:90px; padding:1px 6px;
+  background:var(--fill-bg); border-bottom:1px solid var(--gold-dark);
+  outline:none;
+}
+.narrative-blank:hover{ background:#fdeec2; }
+.narrative-blank:focus{ background:#fdeec2; }
+.narrative-blank:empty:before{
+  content:attr(data-placeholder); color:#b6a367; font-style:italic;
+}
+
+/* Remarks box under a grid table (e.g. Section F write-up) */
+.remarks-box{
+  margin-top:10px; min-height:70px;
+  background:var(--fill-bg); border:1px solid var(--line);
+  border-radius:4px; padding:10px 12px;
+  font-size:13.5px; line-height:1.7; outline:none;
+}
+.remarks-box:focus{ box-shadow:inset 0 0 0 1px var(--gold-dark); }
+.remarks-box:empty:before{
+  content:attr(data-placeholder); color:#b6a367; font-style:italic;
+}
+
+@media print{
+  body{ background:#fff; padding:0; margin:0; }
+  .toolbar{ display:none; }
+  .sheet{ box-shadow:none; border:none; max-width:100%; padding:10mm 12mm; }
+  .add-col-btn, .add-row-btn, .col-remove, .row-remove{ display:none !important; }
+  table.dtable th, table.dtable--facility th, h2.section-title{
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+}
