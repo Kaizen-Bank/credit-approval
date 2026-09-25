@@ -129,25 +129,16 @@ const CAM_SECTIONS = [
     ]
   },
   {
-    // Sections I & J are fixed boilerplate — shown as static, non-editable
-    // text exactly as they appear in the source Credit Approval Sheet.
     id: 'sectionI',
     title: 'Section I — Conditions Precedent to Disbursement',
-    type: 'static',
-    lines: [
-      'Acceptance of offer letter.',
-      'Submission of a valid Letter of Non-Indebtedness from Branch International Financial Services Limited, confirming that the customer has fully settled the outstanding obligation.'
-    ]
+    type: 'text',
+    placeholder: 'Write conditions precedent to disbursement here…'
   },
   {
     id: 'sectionJ',
     title: 'Section J — Justification for Approval',
-    type: 'static',
-    lines: [
-      "Obligor's salary is adequate to repay the loan.",
-      'Obligor is a new customer of the bank.',
-      'Obligor is aware of the implication of default, as they can be reported to their employer and that would put their job at risk.'
-    ]
+    type: 'text',
+    placeholder: 'Write justification for approval here…'
   },
   {
     // Static signature block — "Please kindly approve." line, role
