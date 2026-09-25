@@ -9,8 +9,8 @@ const state = {}; // section.id -> table state (for field/grid) or lines (for te
 function fieldSectionState(section) {
   return {
     columns: [
-      { id: 'field', label: 'Field', locked: true, labelLocked: true, staticCells: true },
-      { id: 'value', label: 'Details', locked: true, labelLocked: true }
+      { id: 'field', label: 'Field', locked: true, labelLocked: false, staticCells: false },
+      { id: 'value', label: 'Details', locked: true, labelLocked: false }
     ],
     rows: section.fields.map((label, i) => ({
       id: 'row_' + i,
@@ -71,7 +71,9 @@ function buildSheet() {
     if (section.title) {
       const h = document.createElement('h2');
       h.className = 'section-title';
+      h.contentEditable = 'true';
       h.textContent = section.title;
+      h.addEventListener('input', () => { section.title = h.textContent; save(); });
       block.appendChild(h);
     }
 
